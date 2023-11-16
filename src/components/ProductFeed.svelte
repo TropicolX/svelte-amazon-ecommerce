@@ -5,9 +5,6 @@
 
 	export let products = [];
 
-	// $: products = products.map((product) => ({}));
-	console.log(products);
-
 	const columnWidth = 435; // Width of each column
 	const rowHeight = 529.16; // Height of each row
 

@@ -50,14 +50,11 @@
 {#await fetchData()}
 	<Loading />
 {:then}
-	<div class="home">
-		<Header />
-		<main>
-			<Banner />
-			<ProductFeed {products} />
-		</main>
-		<Footer />
-	</div>
+	<main class="home">
+		<Banner />
+		<ProductFeed {products} />
+	</main>
+	<Footer />
 {/await}
 
 <style lang="scss">

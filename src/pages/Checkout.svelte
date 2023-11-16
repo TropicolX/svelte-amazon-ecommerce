@@ -7,41 +7,35 @@
 	$: totalPrice = $cart.reduce((acc, product) => acc + product.price, 0);
 </script>
 
-<div>
-	<div class="checkout">
-		<Header />
+<main class="main checkout">
+	<div class="left">
+		<img alt="promo" src="https://links.papareact.com/ikj" />
 
-		<main class="main">
-			<div class="left">
-				<img alt="promo" src="https://links.papareact.com/ikj" />
+		<div class="cart">
+			<h1>
+				{#if cartItemsCount > 0}
+					{"Shopping Cart"}
+				{:else}
+					{"Your cart is empty."}
+				{/if}
+			</h1>
 
-				<div class="cart">
-					<h1>
-						{#if cartItemsCount > 0}
-							{"Shopping Cart"}
-						{:else}
-							{"Your cart is empty."}
-						{/if}
-					</h1>
+			{#each $cart as item (item.id)}
+				<CheckoutProduct
+					id={item.id}
+					name={item.name}
+					price={item.price}
+				/>
+			{/each}
 
-					{#each $cart as item (item.id)}
-						<CheckoutProduct
-							id={item.id}
-							name={item.name}
-							price={item.price}
-						/>
-					{/each}
-
-					{#if cartItemsCount > 0}
-						<hr />
-						<h3>Total price: ${totalPrice}</h3>
-					{/if}
-				</div>
-			</div>
-			<div class="right" />
-		</main>
+			{#if cartItemsCount > 0}
+				<hr />
+				<h3>Total price: ${totalPrice}</h3>
+			{/if}
+		</div>
 	</div>
-</div>
+	<div class="right" />
+</main>
 
 <style lang="scss">
 	.checkout {
