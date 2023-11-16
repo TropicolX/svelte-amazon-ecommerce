@@ -11,16 +11,55 @@
 
 	const worker = new Worker("/discountCalculatorWorker.js");
 	const imagesToPreload = [bannerUrl, logoUrl, amazonChoiceUrl];
+
+	let products = [];
+
+	const fetchProducts = async () => {
+		const data = await axios
+			.get("products/")
+			.then((response) => response.data);
+
+		if (!data.length) {
+			return [];
+		}
+
+		const updatedProducts = await calculateDiscountedPrices(worker, data);
+
+		products = updatedProducts;
+		return updatedProducts;
+	};
+
+	const fetchData = async () => {
+		try {
+			const products = await fetchProducts();
+
+			const firstThreeProductImages = products
+				.slice(0, 3)
+				.map((product) => product.images[0]);
+
+			// Preload images and fetch data
+			await preloadImages([
+				...imagesToPreload,
+				...firstThreeProductImages,
+			]);
+		} catch (error) {
+			return error;
+		}
+	};
 </script>
 
-<div class="home">
-	<Header />
-	<main>
-		<Banner />
-		<ProductFeed {products} />
-	</main>
-	<Footer />
-</div>
+{#await fetchData()}
+	<Loading />
+{:then}
+	<div class="home">
+		<Header />
+		<main>
+			<Banner />
+			<ProductFeed {products} />
+		</main>
+		<Footer />
+	</div>
+{/await}
 
 <style lang="scss">
 	.home {

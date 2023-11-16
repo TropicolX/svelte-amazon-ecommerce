@@ -7,10 +7,10 @@
 </script>
 
 <Router>
-	<Route path="/">
+	<Route path="/" let:params>
 		<AsyncComponent promise={homePromise} />
 	</Route>
-	<Route path="/checkout">
+	<Route path="/checkout" let:params>
 		<AsyncComponent promise={checkoutPromise} />
 	</Route>
 </Router>

@@ -26,16 +26,9 @@
 		background-image: linear-gradient(to top, $bg-gray, transparent);
 	}
 
-	.image,
-	.skeleton {
+	.image {
 		width: 100%;
 		aspect-ratio: 1425/570;
-	}
-
-	.skeleton {
-		z-index: 10;
-		background: rgb(131, 131, 131);
-		animation: skeleton 1s ease-in-out infinite alternate;
 	}
 
 	@keyframes skeleton {
