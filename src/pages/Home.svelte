@@ -1,6 +1,5 @@
 <script>
 	import axios from "../axios";
-
 	import { amazonChoiceUrl, bannerUrl, logoUrl } from "../constants";
 	import { calculateDiscountedPrices, preloadImages } from "../utils";
 	import Banner from "../components/Banner.svelte";
