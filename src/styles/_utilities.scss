@@ -1,0 +1,81 @@
+$amazon-blue: hsl(214, 27%, 10%);
+$amazon-light-blue: hsl(213, 28%, 19%);
+$amazon-yellow: hsl(43, 96%, 56%);
+$amazon-light-yellow: #fde68b;
+$amazon-dark-yellow: hsl(38, 92%, 50%);
+$bg-gray: hsl(220, 14%, 96%);
+$text-gray: hsl(218, 11%, 65%);
+$text-dark-gray: hsl(216, 7%, 29%);
+$text-blue: hsl(224, 70%, 53%);
+$text-red: hsl(4, 81%, 54%);
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$font-stack: "Nunito Sans", sans-serif;
+
+%flex {
+  display: flex;
+  align-items: center;
+}
+
+%text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+%text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+%btn {
+  padding: 0.5rem;
+  border: 2px solid #fcd34d;
+  border-radius: 0.125rem;
+  background-image: linear-gradient(to bottom,
+      $amazon-light-yellow,
+      $amazon-yellow);
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    background-image: linear-gradient(to bottom,
+        $amazon-dark-yellow,
+        $amazon-yellow);
+  }
+}
+
+%btn-secondary {
+  @extend %btn;
+  border: 1px solid $text-gray;
+  background-image: linear-gradient(to bottom, #ededed, #d9d9d9);
+
+  &:active {
+    background-image: linear-gradient(to bottom, #b4b9c1, #d9d9d9);
+  }
+}
+
+%btn-submit {
+  @extend %btn;
+  border: 1px solid #a88734 #9c7e31 #846a29;
+  outline: 1px solid $text-gray;
+  background-image: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+
+  &:active {
+    background-image: linear-gradient(to bottom, #bea66b, #f0c14b);
+  }
+}
+
+@media (min-width: 768px) {
+  %btn {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
